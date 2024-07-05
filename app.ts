@@ -1,28 +1,15 @@
-enum Role {
-  ADMIN,
-  READ_ONLY,
-  AUTHOR,
+function combine(input1: number | string, input2: number | string) {
+  let result;
+  if (typeof input1 === "number" && typeof input2 === "number") {
+    result = input1 + input2;
+  } else {
+    result = input1.toString() + input2.toString();
+  }
+  return result;
 }
 
-const person: {
-  name: string;
-  age: number;
-  hobbies: string[]; // this is an Array
-  access: [number, string]; // this is a tuple or fixed length Array
-  role: Role; // enum
-} = {
-  name: "Rendi",
-  age: 34,
-  hobbies: ["Sports", "Cooking"],
-  access: [2, "READ"],
-  role: Role.ADMIN,
-};
+const combinedAges = combine(30, 26);
+console.log(combinedAges);
 
-let favoriteActivities: string[];
-favoriteActivities = ["Swimming", "Basketball"];
-
-console.log(person.name);
-
-for (const hobby of person.hobbies) {
-  console.log(hobby.toUpperCase());
-}
+const combinedNames = combine("Max", "Anna");
+console.log(combinedNames);
