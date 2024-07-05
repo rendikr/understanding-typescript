@@ -1,13 +1,21 @@
+enum Role {
+  ADMIN,
+  READ_ONLY,
+  AUTHOR,
+}
+
 const person: {
   name: string;
   age: number;
   hobbies: string[]; // this is an Array
-  role: [number, string]; // this is a Tuple or fixed length Array
+  access: [number, string]; // this is a tuple or fixed length Array
+  role: Role; // enum
 } = {
   name: "Rendi",
   age: 34,
   hobbies: ["Sports", "Cooking"],
-  role: [2, "author"],
+  access: [2, "READ"],
+  role: Role.ADMIN,
 };
 
 let favoriteActivities: string[];
