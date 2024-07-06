@@ -22,10 +22,33 @@ class Department {
   }
 }
 
-const accounting = new Department("dept1", "Accounting");
+class ITDepartment extends Department {
+  constructor(id: string, public admins: string[]) {
+    super(id, "IT"); // calls the parent class constructor
+  }
+}
 
+class AccountingDepartment extends Department {
+  constructor(id: string, private reports: string[]) {
+    super(id, "Accounting"); // calls the parent class constructor
+  }
+
+  addReport(text: string) {
+    this.reports.push(text);
+  }
+
+  printReports() {
+    console.log(this.reports);
+  }
+}
+
+const itDepartment = new ITDepartment("dept1", ["Max"]);
+itDepartment.printEmployeeInformation();
+itDepartment.describe();
+
+const accounting = new AccountingDepartment("dept2", []);
 accounting.addEmployee("Max");
 accounting.addEmployee("Manu");
+accounting.addReport("Employee Salary Report");
 accounting.printEmployeeInformation();
-
 accounting.describe();
