@@ -1,4 +1,5 @@
 class Department {
+  static fiscalYear = 2024;
   // private readonly id: string;
   // private name: string;
   protected employees: string[] = [];
@@ -6,6 +7,10 @@ class Department {
   constructor(private readonly id: string, public name: string) {
     // this.id = id;
     // this.name = name;
+  }
+
+  static createEmployee(name: string) {
+    return { name: name };
   }
 
   describe() {
@@ -65,8 +70,12 @@ class AccountingDepartment extends Department {
   }
 }
 
-const itDepartment = new ITDepartment("dept1", ["Max"]);
+const employee1 = Department.createEmployee("Max");
+console.log(employee1, Department.fiscalYear);
+
+const itDepartment = new ITDepartment("dept1", ["Gru"]);
 itDepartment.describe();
+itDepartment.addEmployee("Gru");
 itDepartment.printEmployeeInformation();
 
 const accounting = new AccountingDepartment("dept2", []);
