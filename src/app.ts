@@ -1,7 +1,12 @@
-const button = document.querySelector("button")!;
+const hobbies = ["Sports", "Cooking"];
+const activeHobbies = ["Hiking"];
 
-function clickHandler(message: string) {
-  console.log("Clicked! " + message);
-}
+// this will not insert a new array of hobbies into activeHobbies, instead put each items of hobbies into activeHobbies
+activeHobbies.push(...hobbies);
 
-if (button) button.addEventListener("click", clickHandler.bind(null));
+const user = {
+  name: "max",
+  age: 30,
+};
+
+const copiedUser = { ...user };
