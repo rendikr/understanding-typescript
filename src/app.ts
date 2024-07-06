@@ -13,7 +13,8 @@ add = (n1: number, n2: number) => {
 };
 
 interface Named {
-  readonly name: string;
+  readonly name?: string;
+  outputName?: string;
 }
 
 interface Greetable extends Named {
@@ -21,22 +22,27 @@ interface Greetable extends Named {
 }
 
 class Person implements Greetable {
-  name: string;
-  age: number;
+  name?: string;
+  age = 32;
 
-  constructor(name: string, age: number) {
-    this.name = name;
-    this.age = age;
+  constructor(name?: string) {
+    if (name) {
+      this.name = name;
+    }
   }
 
   greet(phrase: string) {
-    console.log(phrase + " " + this.name);
+    if (this.name) {
+      console.log(phrase + " " + this.name);
+    } else {
+      console.log("Hi!");
+    }
   }
 }
 
 let user1: Greetable;
 
-user1 = new Person("Max", 32);
+user1 = new Person();
 // user1.name = "Manu"; // will be error, because field name is readonly
 user1.greet("Hi there! I am");
 console.log(user1);
