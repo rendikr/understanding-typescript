@@ -108,3 +108,13 @@ function moveAnimal(animal: Animal) {
 
 moveAnimal({ category: "bird", flyingSpeed: 10 });
 moveAnimal({ category: "horse", runningSpeed: 20 });
+
+// BOTH ARE TWO WAYS OF TYPE CASTING
+const userInputElement = <HTMLInputElement>(
+  document.getElementById("user-input")!
+);
+const userInputElement2 = document.getElementById(
+  "user-input"
+)! as HTMLInputElement;
+
+userInputElement2.value = "Hi!";
