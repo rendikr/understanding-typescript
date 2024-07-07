@@ -34,6 +34,19 @@ resultString.split(" ");
 const resultNumber = add(5.0095, 6);
 resultNumber.toFixed(2);
 
+const fetchedUserData = {
+  id: "u1",
+  name: "Max",
+  job: { title: "CEO", description: "My Own Company" },
+};
+
+console.log(fetchedUserData?.job?.title);
+
+const userInput = null;
+
+const storedDataOne = userInput || "DEFAULT"; // If userInput is truthy (not null, not undefined, not "", not 0, and not false), it returns the value of userInput. If userInput is falsy (including null or an empty string ""), it returns the right-hand side ("DEFAULT")
+const storedDataTwo = userInput ?? "DEFAULT"; // If userInput is null or undefined, it returns the right-hand side ("DEFAULT"). If userInput is any other value (including an empty string ""), it returns the value of userInput
+
 type Numeric = number | boolean;
 type Universal = Combinable & Numeric;
 type UnknownEmployee = Employee | Admin;
