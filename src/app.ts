@@ -1,10 +1,12 @@
 // this is a decorator
-function Logger(constructor: Function) {
-  console.log("Logging...");
-  console.log(constructor);
+function Logger(logString: string) {
+  return function (constructor: Function) {
+    console.log(logString);
+    console.log(constructor);
+  };
 }
 
-@Logger // point to the decorator
+@Logger("LOGGING - PERSON") // point to the decorator
 class Person {
   name = "Max";
 
