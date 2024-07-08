@@ -35,3 +35,13 @@ function countAndDescribe<T extends Lenghty>(el: T) {
 
 console.log(countAndDescribe("Hi There!"));
 console.log(countAndDescribe(["Sports", "Cooking"]));
+
+// U is using extends keyof T, it means U is a property of T
+function extractAndConvert<T extends object, U extends keyof T>(
+  obj: T,
+  key: U
+) {
+  return "Value: " + obj[key];
+}
+
+console.log(extractAndConvert({ name: "Max" }, "name"));
