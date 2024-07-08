@@ -1,3 +1,19 @@
+// autobind decorator
+function Autobind(_: any, _2: string, descriptor: PropertyDescriptor) {
+  const originalMethod = descriptor.value;
+  const adjDescriptor: PropertyDescriptor = {
+    configurable: true,
+    enumerable: false,
+    get() {
+      // the `this` will be bind to the original object on which we defined the getter
+      const boundFn = originalMethod.bind(this);
+      return boundFn;
+    },
+  };
+  return adjDescriptor;
+}
+
+// ProjectInput Class
 class ProjectInput {
   templateElement: HTMLTemplateElement;
   hostElement: HTMLDivElement;
@@ -34,6 +50,7 @@ class ProjectInput {
     this.attach();
   }
 
+  @Autobind
   private submitHandler(event: Event) {
     // called when the form is submitted
     event.preventDefault();
@@ -42,7 +59,7 @@ class ProjectInput {
 
   private configure() {
     // this.element bind to the form element
-    this.element.addEventListener("submit", this.submitHandler.bind(this));
+    this.element.addEventListener("submit", this.submitHandler);
   }
 
   // insert the templateElement after the beginning of hostElement tag open
