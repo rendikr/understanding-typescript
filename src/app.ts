@@ -140,7 +140,10 @@ function Required(target: any, propName: string) {
   // target.constructor.name will be pointed to the class name
   registeredValidators[target.constructor.name] = {
     ...registeredValidators[target.constructor.name],
-    [propName]: ["required"], // this will make validator config for the "propName" to be "required"
+    [propName]: [
+      ...(registeredValidators[target.constructor.name]?.[propName] ?? []),
+      "required",
+    ], // this will make validator config for the "propName" to be "required"
   };
 }
 
@@ -148,7 +151,10 @@ function PostiveNumber(target: any, propName: string) {
   // target.constructor.name will be pointed to the class name
   registeredValidators[target.constructor.name] = {
     ...registeredValidators[target.constructor.name],
-    [propName]: ["positive"], // this will make validator config for the "propName" to be "positive"
+    [propName]: [
+      ...(registeredValidators[target.constructor.name]?.[propName] ?? []),
+      "positive",
+    ], // this will make validator config for the "propName" to be "positive"
   };
 }
 
