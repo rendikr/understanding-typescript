@@ -57,7 +57,7 @@ function Log3(
 }
 
 function Log4(target: any, name: string | Symbol, position: number) {
-  console.log("Method decorator!");
+  console.log("Parameter decorator!");
   console.log(target);
   console.log(name);
   console.log(position);
