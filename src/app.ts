@@ -15,6 +15,23 @@ function merge<T extends object, U extends object>(objA: T, objB: U) {
   return Object.assign(objA, objB);
 }
 
-const mergedObj = merge({ name: "Max" }, { age: 30 });
+const mergedObj = merge({ name: "Max", hobbies: ["sports"] }, { age: 30 });
 console.log(mergedObj.name);
 console.log(mergedObj.age);
+
+interface Lenghty {
+  length: number;
+}
+
+function countAndDescribe<T extends Lenghty>(el: T) {
+  let descriptionText = "Got no value.";
+  if (el.length === 1) {
+    descriptionText = "Got 1 element.";
+  } else if (el.length > 1) {
+    descriptionText = "Got " + el.length + " elements.";
+  }
+  return [el, descriptionText];
+}
+
+console.log(countAndDescribe("Hi There!"));
+console.log(countAndDescribe(["Sports", "Cooking"]));
