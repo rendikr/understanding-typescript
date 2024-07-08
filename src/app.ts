@@ -9,14 +9,22 @@ function Logger(logString: string) {
 
 function WithTemplate(template: string, hookId: string) {
   console.log("Template Factory");
-  return function (constructor: any) {
-    console.log("Rendering template");
-    const hookEl = document.getElementById(hookId);
-    const person = new constructor();
-    if (hookEl) {
-      hookEl.innerHTML = template;
-      hookEl.querySelector("h1")!.textContent = person.name;
-    }
+  return function <T extends { new (...args: any[]): { name: string } }>(
+    originalConstructor: T
+  ) {
+    // return a constructor function, with it still constructing the original constructor (by using super()) and append new constructor codes. It will then replace the original constructor (but in a way of appending it, not replacing everything)
+
+    return class extends originalConstructor {
+      constructor(..._: any[]) {
+        super();
+        console.log("Rendering template");
+        const hookEl = document.getElementById(hookId);
+        if (hookEl) {
+          hookEl.innerHTML = template;
+          hookEl.querySelector("h1")!.textContent = this.name;
+        }
+      }
+    };
   };
 }
 
