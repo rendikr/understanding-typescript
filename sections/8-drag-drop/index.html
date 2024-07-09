@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>ProjectManager</title>
+    <link rel="stylesheet" href="app.css" />
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=RM7KZ2ZLzzHd6dcKUbfa6eEYwSpOgY61enmApbdhwTfrWp7RybXlr7mwDMUVZzwG6r79RQKXrCJIhIlqi70rd5YO1wT_eIbT9yM1uhlbqDtY1FZAnBFniutEtnt9zRFuvMRkPUYbSp-ohWmJaOa2xh50noV399wp0dQbIxw1lZuz666WeC0CyR4rfUA6he9lnpDyt2koPQfDcoxol8j10nQe3f0YCTP8LLTYJmNO30-Xx238QC5-4HV26tluyA4xW5cfs_M7V2nEGc1dCcd19wNwN3Yw9SRtyTR19BVf8U418bGUW_YjrZ5rsEMiJDhdbTbgO27Ixi8wrOowRb81gZAsC-SibJs0QFG6lr2_7Z_yjZhH6JA1n71I2g1v7CWr_yX0C-J2VjFLfKNAXgiyUf-EFy_xLnfUQzrDMzHp-xuL-yxwVLEhUCxjHiLitc0cManHG9MEUbReAdHroJg0aA" charset="UTF-8"></script><script src="dist/app.js" defer></script>
+  </head>
+  <body>
+    <template id="project-input">
+      <form>
+        <div class="form-control">
+          <label for="title">Title</label>
+          <input type="text" id="title" />
+        </div>
+        <div class="form-control">
+          <label for="description">Description</label>
+          <textarea id="description" rows="3"></textarea>
+        </div>
+        <div class="form-control">
+          <label for="people">People</label>
+          <input type="number" id="people" step="1" min="0" max="10" />
+        </div>
+        <button type="submit">ADD PROJECT</button>
+      </form>
+    </template>
+    <template id="single-project">
+      <li draggable="true">
+        <h2></h2>
+        <h3></h3>
+        <p></p>
+      </li>
+    </template>
+    <template id="project-list">
+      <section class="projects">
+        <header>
+          <h2></h2>
+        </header>
+        <ul></ul>
+      </section>
+    </template>
+    <div id="app"></div>
+  </body>
+</html>
